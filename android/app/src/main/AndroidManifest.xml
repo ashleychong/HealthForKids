@@ -10,6 +10,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="health_for_kids"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAf_gjJ88mBl5TzSSH05lM000snZU1kDwk"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
