@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'src/locations.dart' as locations;
+import 'package:flutter/gestures.dart';
+import 'package:flutter/foundation.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -43,6 +45,7 @@ class _MyAppState extends State<MyApp> {
                   Center(child: Icon(Icons.info)),
                   Center(child: Icon(Icons.forum)),
                 ],
+                physics: NeverScrollableScrollPhysics(),
               ),
               bottomNavigationBar: TabBar(
                 tabs: [
@@ -76,6 +79,12 @@ class _MyAppState extends State<MyApp> {
         zoom: 2,
       ),
       markers: _markers.values.toSet(),
+      gestureRecognizers: Set()
+        ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
+        ..add(Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
+        ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
+        ..add(Factory<VerticalDragGestureRecognizer>(
+            () => VerticalDragGestureRecognizer())),
     );
   }
 }
