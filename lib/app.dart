@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
   WebView _buildForumWebView() {
     return WebView(
       key: UniqueKey(),
-      initialUrl: 'https://www.jiuntian.com',
+      initialUrl: 'https://host.jiuntian.com',
       javascriptMode: JavascriptMode.unrestricted,
       gestureRecognizers: Set()
         ..add(Factory<VerticalDragGestureRecognizer>(
