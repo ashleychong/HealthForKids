@@ -80,8 +80,8 @@ class _MyAppState extends State<MyApp> {
       scrollGesturesEnabled: true,
       rotateGesturesEnabled: true,
       initialCameraPosition: CameraPosition(
-        target: const LatLng(0, 0),
-        zoom: 2,
+        target: const LatLng(4.1412, 102.18653),
+        zoom: 7,
       ),
       markers: _markers.values.toSet(),
       gestureRecognizers: Set()
