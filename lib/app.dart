@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'src/locations.dart' as locations;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
@@ -43,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 children: <Widget>[
                   _buildMap(),
                   Center(child: Icon(Icons.info)),
-                  Center(child: Icon(Icons.forum)),
+                  _buildForumWebView(),
                 ],
                 physics: NeverScrollableScrollPhysics(),
               ),
@@ -90,6 +92,18 @@ class _MyAppState extends State<MyApp> {
         ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
         ..add(Factory<VerticalDragGestureRecognizer>(
             () => VerticalDragGestureRecognizer())),
+    );
+  }
+
+  WebView _buildForumWebView() {
+    return WebView(
+      key: UniqueKey(),
+      initialUrl: 'https://www.jiuntian.com',
+      javascriptMode: JavascriptMode.unrestricted,
+      gestureRecognizers: Set()
+        ..add(Factory<VerticalDragGestureRecognizer>(
+              () => VerticalDragGestureRecognizer()))
+        ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer())),
     );
   }
 }
