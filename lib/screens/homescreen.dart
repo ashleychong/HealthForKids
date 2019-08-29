@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:health_for_kids/screens/info_screen.dart';
 import 'package:health_for_kids/src/locations.dart' as locations;
 import 'package:flutter/gestures.dart';
@@ -43,7 +44,7 @@ class _HomescreenState extends State<Homescreen> {
               children: <Widget>[
                 _buildMap(),
                 InfoScreen(),
-                Center(child: Icon(Icons.forum)),
+                _buildForumWebView(),
               ],
               physics: NeverScrollableScrollPhysics(),
             ),
@@ -78,8 +79,8 @@ class _HomescreenState extends State<Homescreen> {
       scrollGesturesEnabled: true,
       rotateGesturesEnabled: true,
       initialCameraPosition: CameraPosition(
-        target: const LatLng(0, 0),
-        zoom: 2,
+        target: const LatLng(4.1412, 102.18653),
+        zoom: 7,
       ),
       markers: _markers.values.toSet(),
       gestureRecognizers: Set()
@@ -88,6 +89,18 @@ class _HomescreenState extends State<Homescreen> {
         ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
         ..add(Factory<VerticalDragGestureRecognizer>(
             () => VerticalDragGestureRecognizer())),
+    );
+  }
+
+  WebView _buildForumWebView() {
+    return WebView(
+      key: UniqueKey(),
+      initialUrl: 'https://host.jiuntian.com',
+      javascriptMode: JavascriptMode.unrestricted,
+      gestureRecognizers: Set()
+        ..add(Factory<VerticalDragGestureRecognizer>(
+                () => VerticalDragGestureRecognizer()))
+        ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer())),
     );
   }
 }
