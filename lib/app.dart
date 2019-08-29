@@ -71,6 +71,11 @@ class _MyAppState extends State<MyApp> {
   GoogleMap _buildMap() {
     return GoogleMap(
       onMapCreated: _onMapCreated,
+      myLocationEnabled: true,
+      zoomGesturesEnabled: true,
+      tiltGesturesEnabled: true,
+      scrollGesturesEnabled: true,
+      rotateGesturesEnabled: true,
       initialCameraPosition: CameraPosition(
         target: const LatLng(0, 0),
         zoom: 2,
