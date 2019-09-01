@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:health_for_kids/widgets/preview_card.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:health_for_kids/screens/info_screen.dart';
 import 'package:health_for_kids/src/locations.dart' as locations;
@@ -12,22 +13,35 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  locations.Office _office;
+  bool _showPreview = false;
   final Map<String, Marker> _markers = {};
+
   Future<void> _onMapCreated(GoogleMapController controller) async {
     final googleOffices = await locations.getGoogleOffices();
     setState(() {
       _markers.clear();
       for (final office in googleOffices.offices) {
         final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
-          infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
-          ),
-        );
+            markerId: MarkerId(office.name),
+            position: LatLng(office.lat, office.lng),
+            infoWindow: InfoWindow(
+              title: office.name,
+              snippet: office.address,
+            ),
+            onTap: () => _onMarkerTap(office));
         _markers[office.name] = marker;
       }
+    });
+  }
+
+  void _onMarkerTap(locations.Office office) {
+    _office = office;
+    setState(() {
+      // if (!_showPreview) {
+      _showPreview = !_showPreview;
+      print(_showPreview);
+      // }
     });
   }
 
@@ -70,25 +84,36 @@ class _HomescreenState extends State<Homescreen> {
             )),
       );
 
-  GoogleMap _buildMap() {
-    return GoogleMap(
-      onMapCreated: _onMapCreated,
-      myLocationEnabled: true,
-      zoomGesturesEnabled: true,
-      tiltGesturesEnabled: true,
-      scrollGesturesEnabled: true,
-      rotateGesturesEnabled: true,
-      initialCameraPosition: CameraPosition(
-        target: const LatLng(4.1412, 102.18653),
-        zoom: 7,
-      ),
-      markers: _markers.values.toSet(),
-      gestureRecognizers: Set()
-        ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
-        ..add(Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
-        ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
-        ..add(Factory<VerticalDragGestureRecognizer>(
-            () => VerticalDragGestureRecognizer())),
+  Stack _buildMap() {
+    return Stack(
+      children: <Widget>[
+        GoogleMap(
+          onMapCreated: _onMapCreated,
+          myLocationEnabled: true,
+          zoomGesturesEnabled: true,
+          tiltGesturesEnabled: true,
+          scrollGesturesEnabled: true,
+          rotateGesturesEnabled: true,
+          initialCameraPosition: CameraPosition(
+            target: const LatLng(4.1412, 102.18653),
+            zoom: 7,
+          ),
+          markers: _markers.values.toSet(),
+          gestureRecognizers: Set()
+            ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
+            ..add(
+                Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()))
+            ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
+            ..add(Factory<VerticalDragGestureRecognizer>(
+                () => VerticalDragGestureRecognizer())),
+        ),
+        Positioned(
+          child: _showPreview ? PreviewCard(_office) : Center(),
+          bottom: 0.0,
+          left: 0.0,
+          right: 0.0,
+        )
+      ],
     );
   }
 
@@ -99,7 +124,7 @@ class _HomescreenState extends State<Homescreen> {
       javascriptMode: JavascriptMode.unrestricted,
       gestureRecognizers: Set()
         ..add(Factory<VerticalDragGestureRecognizer>(
-                () => VerticalDragGestureRecognizer()))
+            () => VerticalDragGestureRecognizer()))
         ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer())),
     );
   }

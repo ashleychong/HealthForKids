@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_for_kids/screens/homescreen.dart';
 import 'package:health_for_kids/screens/info_detail.dart';
+import 'package:health_for_kids/screens/preview_screen.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,15 +13,18 @@ class MyApp extends StatelessWidget {
   }
 
   RouteFactory _routes() {
-    return (setting) {
-      final Map<String, int> arguments = setting.arguments;
+    return (settings) {
+      final Map<String, dynamic> arguments = settings.arguments;
       Widget screen;
-      switch (setting.name) {
+      switch (settings.name) {
         case '/':
           screen = Homescreen();
           break;
         case '/infoDetailScreen':
           screen = InfoDetail(arguments['id']);
+          break;
+        case '/previewScreen':
+          screen = PreviewScreen(arguments['office']);
           break;
         default:
           return null;
