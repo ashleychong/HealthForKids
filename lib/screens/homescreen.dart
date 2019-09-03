@@ -13,7 +13,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  locations.Office _office=null;
+  locations.Office _office;
   bool _showPreview = false;
   final Map<String, Marker> _markers = {};
 
