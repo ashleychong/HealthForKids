@@ -37,17 +37,11 @@ class _HomescreenState extends State<Homescreen> {
     });
   }
 
-  void _invertPreview(){
+  void _onMarkerTap(locations.Office office) {
+    _office = office;
     setState(() {
       _showPreview = !_showPreview;
-      print("inverting marker tap");
-      print(_showPreview);
     });
-  }
-
-  void _onMarkerTap(locations.Office office) async{
-    _office = office;
-    _invertPreview();
   }
 
   @override
@@ -112,8 +106,10 @@ class _HomescreenState extends State<Homescreen> {
             ..add(Factory<VerticalDragGestureRecognizer>(
                 () => VerticalDragGestureRecognizer())),
           onTap: (LatLng a){
-            _invertPreview();
             _office=null;
+            setState(() {
+              _showPreview = false;
+            });
           },
         ),
         Positioned(
