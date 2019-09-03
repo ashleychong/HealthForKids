@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:health_for_kids/widgets/preview_card.dart';
+import 'package:http/http.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:health_for_kids/screens/info_screen.dart';
 import 'package:health_for_kids/src/locations.dart' as locations;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
+import 'package:health_for_kids/data/clinic_data.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -43,7 +45,7 @@ class _HomescreenState extends State<Homescreen> {
     });
   }
 
-  void _onMarkerTap(locations.Office office) {
+  void _onMarkerTap(locations.Office office) async{
     _office = office;
     _invertPreview();
   }
