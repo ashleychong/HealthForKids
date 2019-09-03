@@ -13,7 +13,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-  locations.Office _office;
+  locations.Office _office=null;
   bool _showPreview = false;
   final Map<String, Marker> _markers = {};
 
@@ -35,14 +35,17 @@ class _HomescreenState extends State<Homescreen> {
     });
   }
 
+  void _invertPreview(){
+    setState(() {
+      _showPreview = !_showPreview;
+      print("inverting marker tap");
+      print(_showPreview);
+    });
+  }
+
   void _onMarkerTap(locations.Office office) {
     _office = office;
-    setState(() {
-      // if (!_showPreview) {
-      _showPreview = !_showPreview;
-      print(_showPreview);
-      // }
-    });
+    _invertPreview();
   }
 
   @override
@@ -56,7 +59,7 @@ class _HomescreenState extends State<Homescreen> {
             ),
             body: TabBarView(
               children: <Widget>[
-                _buildMap(),
+                _buildMap(context),
                 InfoScreen(),
                 _buildForumWebView(),
               ],
@@ -84,7 +87,7 @@ class _HomescreenState extends State<Homescreen> {
             )),
       );
 
-  Stack _buildMap() {
+  Stack _buildMap(BuildContext context) {
     return Stack(
       children: <Widget>[
         GoogleMap(
@@ -106,9 +109,13 @@ class _HomescreenState extends State<Homescreen> {
             ..add(Factory<TapGestureRecognizer>(() => TapGestureRecognizer()))
             ..add(Factory<VerticalDragGestureRecognizer>(
                 () => VerticalDragGestureRecognizer())),
+          onTap: (LatLng a){
+            _invertPreview();
+            _office=null;
+          },
         ),
         Positioned(
-          child: _showPreview ? PreviewCard(_office) : Center(),
+          child: (_showPreview & (_office!=null)) ? PreviewCard(_office) : Center(),
           bottom: 0.0,
           left: 0.0,
           right: 0.0,
