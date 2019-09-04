@@ -9,6 +9,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       onGenerateRoute: _routes(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.green[700],
+        accentColor: Colors.white,
+        fontFamily: 'Monotserrat'
+      ),
     );
   }
 
