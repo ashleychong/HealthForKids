@@ -43,7 +43,7 @@ class PreviewCard extends StatelessWidget {
                 style: TextStyle(fontSize: 14.0),
               ),
               leading: Icon(Icons.location_on),
-              trailing: Icon(Icons.directions, color: Colors.teal,),
+              trailing: Icon(Icons.directions, color: Theme.of(context).primaryColor,),
               onTap: () {
                 _openMap(this.office.lat, this.office.long);
               }
@@ -55,47 +55,6 @@ class PreviewCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 18),
             )
-
-
-//            ListTile(
-//              title: Text("", style: TextStyle(
-//                fontSize: 1,
-//              ),),
-//            )
-
-
-//            ButtonTheme.bar(
-//              child: ButtonBar(
-//                alignment: MainAxisAlignment.end,
-//                children: <Widget>[
-//                  Row(
-//                    children: <Widget>[
-//                      Column(
-//                        children: <Widget>[
-//                          MaterialButton(
-//                            onPressed: (){
-//                              _openMap(this.office.lat, this.office.long);
-//                            },
-//                            child: Row(
-//                              children: <Widget>[
-//                                Icon(
-//                                  Icons.directions,
-//                                  size: 30,
-//                                ),
-////                                const Text("Direction"),
-//                              ],
-//                            ),
-//                            shape: RoundedRectangleBorder(
-//                                borderRadius: BorderRadius.circular(30.0)),
-//                            color: Theme.of(context).primaryColor,
-//                          )
-//                        ],
-//                      )
-//                    ],
-//                  )
-//                ],
-//              ),
-//            )
           ],
         ),
       ),
@@ -111,7 +70,7 @@ class PreviewCard extends StatelessWidget {
         arguments: <String, Office>{'office': office});
   }
 
-  _openMap(double lat, double long) async {
+  void _openMap(double lat, double long) async {
     // Android
     var url = 'geo:$lat,$long';
     if (Platform.isIOS) {
