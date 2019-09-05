@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_for_kids/src/locations.dart';
+import 'package:health_for_kids/data/clinic_data.dart';
 
 class PreviewCard extends StatelessWidget {
   final Office office;

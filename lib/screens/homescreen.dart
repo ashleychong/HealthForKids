@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:health_for_kids/widgets/preview_card.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:health_for_kids/screens/info_screen.dart';
-import 'package:health_for_kids/src/locations.dart' as locations;
+import 'package:health_for_kids/data/clinic_data.dart' as locations;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
@@ -21,13 +21,13 @@ class _HomescreenState extends State<Homescreen> {
   int currentPage = 0;
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
-    final googleOffices = await locations.getGoogleOffices();
+    final googleOffices = await locations.getClinics(context);
     setState(() {
       _markers.clear();
       for (final office in googleOffices.offices) {
         final marker = Marker(
             markerId: MarkerId(office.name),
-            position: LatLng(office.lat, office.lng),
+            position: LatLng(office.lat, office.long),
             infoWindow: InfoWindow(
               title: office.name,
               snippet: office.address,
@@ -41,14 +41,14 @@ class _HomescreenState extends State<Homescreen> {
   void _onMarkerTap(locations.Office office) {
     _office = office;
     setState(() {
-      _showPreview = !_showPreview;
+      _showPreview = true;
     });
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: const Text('Google Office Locations'),
+        title: Center(child: Text('Health For Kids')),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Container(
@@ -61,7 +61,7 @@ class _HomescreenState extends State<Homescreen> {
         tabs: [
           TabData(
             iconData: Icons.map,
-            title: 'Locations',
+            title: 'Klinik',
           ),
           TabData(
             iconData: Icons.info,
