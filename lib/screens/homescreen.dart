@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:health_for_kids/screens/swipe_feed_page.dart';
 import 'package:health_for_kids/widgets/preview_card.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:health_for_kids/screens/info_screen.dart';
@@ -86,6 +87,10 @@ class _HomescreenState extends State<Homescreen> {
             title: 'Info',
           ),
           TabData(
+            iconData: Icons.list,
+            title: 'Peringatan',
+          ),
+          TabData(
             iconData: Icons.forum,
             title: 'Forum',
           ),
@@ -101,6 +106,7 @@ class _HomescreenState extends State<Homescreen> {
     List<Widget> pages = <Widget>[
       _buildMap(context),
       InfoScreen(),
+      SwipeFeedPage(),
       _buildForumWebView(),
     ];
     return pages[page];
