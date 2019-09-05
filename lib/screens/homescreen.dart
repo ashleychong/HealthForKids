@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
+import 'package:health_for_kids/screens/reminder.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -90,6 +91,10 @@ class _HomescreenState extends State<Homescreen> {
             iconData: Icons.list,
             title: 'Peringatan',
           ),
+//          TabData(
+//            iconData: Icons.calendar_today,
+//            title: 'Reminder',
+//          ),
           TabData(
             iconData: Icons.forum,
             title: 'Forum',
@@ -107,6 +112,7 @@ class _HomescreenState extends State<Homescreen> {
       _buildMap(context),
       InfoScreen(),
       SwipeFeedPage(),
+//      MedicineReminder(),
       _buildForumWebView(),
     ];
     return pages[page];

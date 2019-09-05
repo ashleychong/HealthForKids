@@ -9,6 +9,10 @@
   [GeneratedPluginRegistrant registerWithRegistry:self];
   // Override point for customization after application launch.
   [GMSServices provideAPIKey: @"AIzaSyB9o4Ot64vL-vMHiNeTzi-0VzyYwCG9DBo"];
+  if(![[NSUserDefaults standardUserDefaults]objectForKey:@"Notification"]){
+      [[UIApplication sharedApplication] cancelAllLocalNotifications];
+      [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Notification"];
+  }
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

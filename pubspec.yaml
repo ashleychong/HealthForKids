@@ -31,6 +31,11 @@ dependencies:
   fancy_bottom_navigation: ^0.3.2
   location: ^2.3.5
   url_launcher: ^5.1.2
+  provider: ^3.1.0
+  flutter_local_notifications: ^0.8.2
+  rxdart: ^0.22.2
+  shared_preferences: ^0.5.3+4
+  flare_flutter: ^1.5.8
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +56,8 @@ flutter:
   assets:
     - assets/file.json
     - assets/images/portrait.jpeg
+    - assets/animations/
+    - assets/sound/
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -66,6 +73,12 @@ flutter:
     - family: Uni Sans
       fonts:
         - asset: assets/fonts/uni-sans.thin-caps.otf
+    - family: Ic
+      fonts:
+        - asset: assets/fonts/ic/ic_medicine.ttf
+    - family: Angel
+      fonts:
+        - asset: assets/fonts/neu/Angel Signature.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
