@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:health_for_kids/data/clinic_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PreviewCard extends StatelessWidget {
   final Office office;
@@ -45,6 +47,37 @@ class PreviewCard extends StatelessWidget {
             ListTile(
               title: Text(this.office.phone),
               leading: Icon(Icons.call),
+            ),
+            ButtonTheme.bar(
+              child: ButtonBar(
+                alignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          RaisedButton(
+                            onPressed: (){
+                              _openMap(this.office.lat, this.office.long);
+                            },
+                            child: Row(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.directions,
+                                ),
+                                const Text("Direction"),
+                              ],
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(60.0)),
+                            color: Theme.of(context).primaryColor,
+                          )
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -59,5 +92,19 @@ class PreviewCard extends StatelessWidget {
   void _onPreviewCardTap(BuildContext context, Office office) {
     Navigator.pushNamed(context, '/previewScreen',
         arguments: <String, Office>{'office': office});
+  }
+
+  _openMap(double lat, double long) async {
+    // Android
+    var url = 'geo:$lat,$long';
+    if (Platform.isIOS) {
+      // iOS
+      url = 'http://maps.apple.com/?q=$lat,$long';
+    }
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

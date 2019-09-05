@@ -47,10 +47,10 @@ class _HomescreenState extends State<Homescreen> {
         final marker = Marker(
             markerId: MarkerId(office.name),
             position: LatLng(office.lat, office.long),
-            infoWindow: InfoWindow(
-              title: office.name,
-              snippet: office.address,
-            ),
+//            infoWindow: InfoWindow(
+//              title: office.name,
+//              snippet: office.address,
+//            ),
             onTap: () => _onMarkerTap(office));
         _markers[office.name] = marker;
       }
