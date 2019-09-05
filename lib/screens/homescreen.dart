@@ -18,26 +18,22 @@ class _HomescreenState extends State<Homescreen> {
   locations.Office _office;
   bool _showPreview = false;
   final Map<String, Marker> _markers = {};
-  static double lat = 4.1412;
-  static double long = 102.18653;
   int currentPage = 0;
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
     var location = Location();
+    if(!await location.hasPermission()){
+      await location.requestPermission();
+    }
     await location.changeSettings(
       accuracy: LocationAccuracy.HIGH,
       distanceFilter: 0,
       interval: 100,
     );
-    if(!await location.hasPermission()){
-      await location.requestPermission();
-    }
     location.onLocationChanged().listen((LocationData currentLocation) {
-      lat = currentLocation.latitude;
-      long = currentLocation.longitude;
       controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: LatLng(lat, long),
+          target: LatLng(currentLocation.latitude, currentLocation.longitude),
           zoom: 13,
         )
       ));
@@ -121,7 +117,7 @@ class _HomescreenState extends State<Homescreen> {
           scrollGesturesEnabled: true,
           rotateGesturesEnabled: true,
           initialCameraPosition: CameraPosition(
-            target: LatLng(lat, long),
+            target: LatLng(4.1412, 102.18653),
             zoom: 7,
           ),
           markers: _markers.values.toSet(),
