@@ -23,7 +23,7 @@ class _HomescreenState extends State<Homescreen> {
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
     var location = Location();
-    if(!await location.hasPermission()){
+    if (!await location.hasPermission()) {
       await location.requestPermission();
     }
     await location.changeSettings(
@@ -32,12 +32,10 @@ class _HomescreenState extends State<Homescreen> {
       interval: 100,
     );
     location.onLocationChanged().listen((LocationData currentLocation) {
-      controller.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: LatLng(currentLocation.latitude, currentLocation.longitude),
-          zoom: 13,
-        )
-      ));
+      controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(currentLocation.latitude, currentLocation.longitude),
+        zoom: 13,
+      )));
     });
 
     final googleOffices = await locations.getClinics(context);
@@ -80,7 +78,7 @@ class _HomescreenState extends State<Homescreen> {
         tabs: [
           TabData(
             iconData: Icons.map,
-            title: 'Klinik',
+            title: 'Clinics',
           ),
           TabData(
             iconData: Icons.info,
@@ -88,7 +86,7 @@ class _HomescreenState extends State<Homescreen> {
           ),
           TabData(
             iconData: Icons.list,
-            title: 'Peringatan',
+            title: 'Tips',
           ),
           TabData(
             iconData: Icons.forum,

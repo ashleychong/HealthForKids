@@ -15,26 +15,27 @@ class PreviewCard extends StatelessWidget {
             color: Colors.white, borderRadius: BorderRadius.circular(13.0)),
         child: Column(
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.teal[500], Colors.tealAccent[100]],
-                      stops: [0.0, 1.0]),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(13.0),
-                      topRight: Radius.circular(13.0))),
-              child: ListTile(
-                title: Center(
-                    child: Text(
-                  this.office.name,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.w500),
+            Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Colors.teal[500], Colors.tealAccent[100]],
+                          stops: [0.0, 1.0]),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(13.0),
+                          topRight: Radius.circular(13.0))),
+                  child: ListTile(
+                    title: Center(
+                        child: Text(
+                      this.office.name,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w500),
+                    )),
+                  ),
                 )),
-              ),
-            ),
-            Divider(),
             ListTile(
               title: Text(
                 _fullAddress(),
