@@ -81,49 +81,51 @@ class PreviewScreen extends StatelessWidget {
   }
 
   Widget _lowerView() {
-    return Stack(
-      children: <Widget>[
-        Container(
-          color: Colors.grey[200],
-        ),
-        Positioned(
-            top: 15.0,
-            left: 15.0,
-            bottom: 15.0,
-            right: 15.0,
-            child: Card(
-                elevation: 3.0,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
-                  child: ListView(
-                    children: <Widget>[]
-                      ..add(_textSection(
-                          'Alamat', _fullAddress(), Icon(Icons.location_on)))
-                      ..add(Divider())
-                      ..add(_textSection(
-                          'Telefon', office.phone, Icon(Icons.call)))
-                      ..add(_textSection('Fax', office.fax, Icon(Icons.print)))
-                      ..add(Divider())
-                      ..add(_textSection('Pemberian Imunisasi',
-                          office.imunisasi, Icon(Icons.local_hospital)))
-                      ..add(Divider())
-                      ..add(_textSection('Pemeriksaan Fizikal', office.physical,
-                          Icon(Icons.local_hospital)))
-                      ..add(Divider())
-                      ..add(_textSection('Pemeriksaan Tahap Perkembangan',
-                          office.development, Icon(Icons.local_hospital)))
-                      ..add(Divider())
-                      ..add(_textSection('Antropometri', office.antropometri,
-                          Icon(Icons.local_hospital)))
-                      ..add(Divider())
-                      ..add(_textSection('Khidmat Nasihat', office.consultation,
-                          Icon(Icons.local_hospital))),
-                  ),
-                )))
-      ],
-    );
+    return Stack(children: <Widget>[
+      Container(
+        color: Colors.grey[200],
+      ),
+      Positioned(
+          top: 15.0,
+          left: 15.0,
+          bottom: 15.0,
+          right: 15.0,
+          child: Card(
+              elevation: 3.0,
+              child: ListView(
+                children: <Widget>[]
+                  ..add(_textSection(
+                      'Address', _fullAddress(), Icon(Icons.location_on)))
+                  ..add(Divider())
+                  ..add(_textSection('Phone', office.phone, Icon(Icons.call)))
+                  ..add(_textSection('Fax', office.fax, Icon(Icons.print)))
+                  ..add(Divider())
+                  ..add(_textSection('Immmunization',
+                      _convert(office.imunisasi), Icon(Icons.local_hospital)))
+                  ..add(Divider())
+                  ..add(_textSection('Physical Checkup',
+                      _convert(office.physical), Icon(Icons.local_hospital)))
+                  ..add(Divider())
+                  ..add(_textSection('Development Assessment',
+                      _convert(office.development), Icon(Icons.local_hospital)))
+                  ..add(Divider())
+                  ..add(_textSection(
+                      'Anthropometry',
+                      _convert(office.antropometri),
+                      Icon(Icons.local_hospital)))
+                  ..add(Divider())
+                  ..add(_textSection(
+                      'Consultation',
+                      _convert(office.consultation),
+                      Icon(Icons.local_hospital))),
+              )))
+    ]);
     //     )
     //   ],
     // );
+  }
+
+  String _convert(String toBeChecked) {
+    return (toBeChecked == 'Ada' ? 'Available' : toBeChecked);
   }
 }
