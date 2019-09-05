@@ -9,9 +9,9 @@ class PreviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => _onPreviewCardTap(context, this.office),
-        child: Card(
-            child: Column(
+      onTap: () => _onPreviewCardTap(context, this.office),
+      child: Card(
+        child: Column(
           children: <Widget>[
             ListTile(
               title: Text(this.office.name),
@@ -27,7 +27,9 @@ class PreviewCard extends StatelessWidget {
               leading: Icon(Icons.call),
             )
           ],
-        )));
+        ),
+      ),
+    );
   }
 
   void _onPreviewCardTap(BuildContext context, Office office) {
