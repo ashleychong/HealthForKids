@@ -44,11 +44,11 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Your prompt</string>
+    <string>Access Location</string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your prompt</string>
+    <string>Access Location</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your prompt</string>
+    <string>Access Locationn</string>
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>

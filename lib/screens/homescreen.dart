@@ -7,6 +7,7 @@ import 'package:health_for_kids/data/clinic_data.dart' as locations;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:location/location.dart';
 
 class Homescreen extends StatefulWidget {
   @override
@@ -17,10 +18,31 @@ class _HomescreenState extends State<Homescreen> {
   locations.Office _office;
   bool _showPreview = false;
   final Map<String, Marker> _markers = {};
-
+  static double lat = 4.1412;
+  static double long = 102.18653;
   int currentPage = 0;
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
+    var location = Location();
+    await location.changeSettings(
+      accuracy: LocationAccuracy.HIGH,
+      distanceFilter: 0,
+      interval: 100,
+    );
+    if(!await location.hasPermission()){
+      await location.requestPermission();
+    }
+    location.onLocationChanged().listen((LocationData currentLocation) {
+      lat = currentLocation.latitude;
+      long = currentLocation.longitude;
+      controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: LatLng(lat, long),
+          zoom: 13,
+        )
+      ));
+    });
+
     final googleOffices = await locations.getClinics(context);
     setState(() {
       _markers.clear();
@@ -99,7 +121,7 @@ class _HomescreenState extends State<Homescreen> {
           scrollGesturesEnabled: true,
           rotateGesturesEnabled: true,
           initialCameraPosition: CameraPosition(
-            target: const LatLng(4.1412, 102.18653),
+            target: LatLng(lat, long),
             zoom: 7,
           ),
           markers: _markers.values.toSet(),
