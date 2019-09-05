@@ -64,7 +64,7 @@ class Locations {
 Future<Locations> getClinics(BuildContext context) async {
   // Retrieve the locations of Google offices
   final response = json.decode(await
-      DefaultAssetBundle.of(context).loadString("data/file.json")
+      DefaultAssetBundle.of(context).loadString("assets/file.json")
   );
   return Locations.fromJson(response);
 }
