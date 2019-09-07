@@ -19,10 +19,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF3EB16F),
-        elevation: 0.0,
-      ),
+//      appBar: AppBar(
+//        backgroundColor: Color(0xFF3EB16F),
+//        elevation: 0.0,
+//      ),
       body: Container(
         color: Color(0xFFF6F8FC),
         child: Column(
@@ -87,6 +87,7 @@ class TopContainer extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(
+              top: 1,
               bottom: 2,
             ),
             child: Text(
@@ -102,7 +103,7 @@ class TopContainer extends StatelessWidget {
             color: Color(0xFFB0F3CB),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 12.0),
+            padding: EdgeInsets.only(top: 2.0),
             child: Center(
               child: Text(
                 "Number of Reminders",

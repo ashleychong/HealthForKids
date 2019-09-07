@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:health_for_kids/model/medicine.dart';
@@ -32,9 +34,9 @@ class MedicineDetails extends StatelessWidget {
         elevation: 0.0,
       ),
       body: Container(
-        child: Padding(
+        child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
-          child: Column(
+          children: <Widget>[Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               MainSection(medicine: medicine),
@@ -71,7 +73,7 @@ class MedicineDetails extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          ),]
         ),
       ),
     );
@@ -89,7 +91,7 @@ class MedicineDetails extends StatelessWidget {
             ),
             contentPadding: EdgeInsets.only(top: 10.0),
             content: Container(
-              width: MediaQuery.of(context).size.width/2.743*2,
+              width: MediaQuery.of(context).size.width / 2.743 * 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -112,10 +114,22 @@ class MedicineDetails extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           _globalBloc.removeMedicine(medicine);
-                          Navigator.popUntil(
-                            context,
-                            ModalRoute.withName('/'),
-                          );
+//                          Navigator.popUntil(
+//                            context,
+//                            ModalRoute.withName('/'),
+//                          );
+                          Future.delayed(Duration.zero, () {
+                            Navigator.popUntil(
+                              context,
+                              ModalRoute.withName('/'),
+                            );
+                          });
+//                          () {
+//                            Navigator.popUntil(
+//                              context,
+//                              ModalRoute.withName('/'),
+//                            );
+//                          };
                         },
                         child: InkWell(
                           child: Container(
@@ -314,8 +328,10 @@ class ExtendedSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
+//        shrinkWrap: true,
+      mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ExtendedInfoTab(
             fieldTitle: "Reminder Type",
@@ -354,6 +370,7 @@ class ExtendedInfoTab extends StatelessWidget {
   ExtendedInfoTab(
       {Key key, @required this.fieldTitle, @required this.fieldInfo})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(

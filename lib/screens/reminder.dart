@@ -22,6 +22,8 @@ class _MedicineReminderState extends State<MedicineReminder> {
       value: globalBloc,
       child: MaterialApp(
         theme: ThemeData(
+          primaryColor: Color(0xFF3EB16F),//Colors.green[700],
+          accentColor: Colors.white,
           primarySwatch: Colors.green,
           brightness: Brightness.light,
         ),
