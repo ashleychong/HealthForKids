@@ -1,7 +1,7 @@
 class Medicine {
   final List<dynamic> notificationIDs;
   final String medicineName;
-  final int dosage;
+  final String dosage;
   final String medicineType;
   final int interval;
   final String startTime;
@@ -16,7 +16,7 @@ class Medicine {
   });
 
   String get getName => medicineName;
-  int get getDosage => dosage;
+  String get getDosage => dosage;
   String get getType => medicineType;
   int get getInterval => interval;
   String get getStartTime => startTime;

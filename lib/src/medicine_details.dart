@@ -223,7 +223,7 @@ class MainSection extends StatelessWidget {
     return Hero(
       tag: medicine.medicineName + medicine.medicineType,
       child: Icon(
-        Icons.add_to_queue,
+        Icons.alarm,
         color: Color(0xFF3EB16F),
         size: size,
       ),
@@ -252,10 +252,15 @@ class MainSection extends StatelessWidget {
                 ),
               ),
               MainInfoTab(
-                fieldTitle: "Dosage",
-                fieldInfo: medicine.dosage == 0
-                    ? "Not Specified"
-                    : medicine.dosage.toString() + " mg",
+                fieldTitle: "Start Time",
+                fieldInfo: medicine.startTime[0] +
+                    medicine.startTime[1] +
+                    ":" +
+                    medicine.startTime[2] +
+                    medicine.startTime[3],
+//                fieldInfo: medicine.dosage == 0
+//                    ? "Not Specified"
+//                    : medicine.dosage.toString() ,//+ " mg",
               )
             ],
           )
@@ -326,12 +331,16 @@ class ExtendedSection extends StatelessWidget {
                 " ${medicine.interval == 24 ? "One time a day" : (24 / medicine.interval).floor().toString() + " times a day"}",
           ),
           ExtendedInfoTab(
-              fieldTitle: "Start Time",
-              fieldInfo: medicine.startTime[0] +
-                  medicine.startTime[1] +
-                  ":" +
-                  medicine.startTime[2] +
-                  medicine.startTime[3]),
+            fieldTitle: "Description",
+            fieldInfo: medicine.dosage,
+          ),
+//          ExtendedInfoTab(
+//              fieldTitle: "Start Time",
+//              fieldInfo: medicine.startTime[0] +
+//                  medicine.startTime[1] +
+//                  ":" +
+//                  medicine.startTime[2] +
+//                  medicine.startTime[3]),
         ],
       ),
     );

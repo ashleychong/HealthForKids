@@ -226,7 +226,7 @@ class MedicineCard extends StatelessWidget {
     return Hero(
       tag: medicine.medicineName + medicine.medicineType,
       child: Icon(
-        Icons.add_to_queue,
+        Icons.alarm,
         color: Color(0xFF3EB16F),
         size: size,
       ),

@@ -89,12 +89,13 @@ class _NewEntryState extends State<NewEntry> {
                 ),
               ),
               PanelTitle(
-                title: "Dosage in mg",
+                title: "Description",//"Dosage in mg",
                 isRequired: false,
               ),
               TextFormField(
                 controller: dosageController,
-                keyboardType: TextInputType.number,
+//                keyboardType: TextInputType.number,
+//                maxLength: 12,
                 style: TextStyle(
                   fontSize: 16,
                 ),
@@ -189,7 +190,7 @@ class _NewEntryState extends State<NewEntry> {
                     ),
                     onPressed: () {
                       String medicineName;
-                      int dosage;
+                      String dosage;
                       //--------------------Error Checking------------------------
                       //Had to do error checking in UI
                       //Due to unoptimized BLoC value-grabbing architecture
@@ -201,10 +202,10 @@ class _NewEntryState extends State<NewEntry> {
                         medicineName = nameController.text;
                       }
                       if (dosageController.text == "") {
-                        dosage = 0;
+                        dosage = "No description";//0;
                       }
                       if (dosageController.text != "") {
-                        dosage = int.parse(dosageController.text);
+                        dosage = dosageController.text; //int.parse(dosageController.text);
                       }
                       for (var medicine in _globalBloc.medicineList$.value) {
                         if (medicineName == medicine.medicineName) {
