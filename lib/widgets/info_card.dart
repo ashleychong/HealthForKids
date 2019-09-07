@@ -27,28 +27,88 @@ class InfoCard extends StatelessWidget {
     return GestureDetector(
       child: GestureDetector(
           onTap: () => _onInfoCardTap(context, info.url),
-          child: Padding(
-            padding: EdgeInsets.all(5.0),
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    _buildHeader(),
-                    SizedBox(height: 10.0),
-                    _buildTextSection(),
-                  ],
-                ),
-              ),
-            ),
-          )),
+          child: _buildCard(context)),
     );
+
+    // Padding(
+    //         padding: EdgeInsets.all(5.0),
+    //         child: Card(
+    //           child: Padding(
+    //             padding: EdgeInsets.all(10.0),
+    //             child: Column(
+    //               mainAxisSize: MainAxisSize.min,
+    //               crossAxisAlignment: CrossAxisAlignment.start,
+    //               children: <Widget>[
+    //                 _buildHeader(),
+    //                 SizedBox(height: 10.0),
+    //                 _buildTextSection(),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //       )
   }
 
   void _onInfoCardTap(BuildContext context, String url) {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+  }
+
+  Widget _buildCard(BuildContext context) {
+    return GestureDetector(
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border(
+                top: BorderSide(color: Colors.grey),
+                bottom: BorderSide(color: Colors.grey),
+                left: BorderSide(color: Colors.grey),
+                right: BorderSide(color: Colors.grey)),
+            borderRadius: BorderRadius.circular(12.0)),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 0.5, 0.0, 0.5),
+          child: Padding(
+            padding: const EdgeInsets.all(13.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(bottom: 6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Flexible(
+                        child: Text(
+                          info.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22.0),
+                        ),
+                        flex: 2,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                            height: 80.0,
+                            width: 80.0,
+                            child: Image.network(
+                              info.imageURL,
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  info.author,
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.green[600]),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
