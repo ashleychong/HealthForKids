@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_for_kids/model/info.dart';
-import 'package:health_for_kids/screens/webtest.dart';
+import 'package:health_for_kids/screens/info_detail.dart';
 
 class InfoCard extends StatelessWidget {
   final Info info;
