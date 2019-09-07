@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:health_for_kids/model/info.dart';
-import 'package:health_for_kids/src/store.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class InfoDetail extends StatelessWidget {
-  final int _infoID;
+class WebViewContainer extends StatefulWidget {
+  final url;
+  WebViewContainer(this.url);
+  @override
+  _WebViewContainerState createState() => _WebViewContainerState(this.url);
+}
 
-  InfoDetail(this._infoID);
+class _WebViewContainerState extends State<WebViewContainer> {
+  var _url;
+  final _key = UniqueKey();
+  _WebViewContainerState(this._url);
 
   @override
   Widget build(BuildContext context) {
-    Info fetchByID(int id) {
-      List<Info> list = getInfo();
-      for (var i = 0; i < list.length; i++) {
-        if (list[i].id == id) {
-          return list[i];
-        }
-      }
-      return null;
-    }
-
-    Info info = fetchByID(_infoID);
-
     return Scaffold(
-      appBar: AppBar(
-          title: Text(info.header,
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w300))),
-      body: Padding(
-        child: Text(info.content),
-        padding: EdgeInsets.all(10.0),
-      ),
-    );
+        appBar: AppBar(),
+        body: Column(
+          children: [
+            Expanded(
+                child: WebView(
+                    key: _key,
+                    javascriptMode: JavascriptMode.unrestricted,
+                    initialUrl: _url))
+          ],
+        ));
   }
 }

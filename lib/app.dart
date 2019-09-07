@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:health_for_kids/screens/homescreen.dart';
-import 'package:health_for_kids/screens/info_detail.dart';
 import 'package:health_for_kids/screens/preview_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -10,10 +9,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: _routes(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.green[700],
-        accentColor: Colors.white,
-        fontFamily: 'Monotserrat'
-      ),
+          primaryColor: Colors.green[700],
+          accentColor: Colors.white,
+          fontFamily: 'Monotserrat'),
     );
   }
 
@@ -24,9 +22,6 @@ class MyApp extends StatelessWidget {
       switch (settings.name) {
         case '/':
           screen = Homescreen();
-          break;
-        case '/infoDetailScreen':
-          screen = InfoDetail(arguments['id']);
           break;
         case '/previewScreen':
           screen = PreviewScreen(arguments['office']);

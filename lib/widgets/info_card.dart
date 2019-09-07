@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health_for_kids/model/info.dart';
+import 'package:health_for_kids/screens/webtest.dart';
 
 class InfoCard extends StatelessWidget {
   final Info info;
@@ -11,7 +12,7 @@ class InfoCard extends StatelessWidget {
     Container _buildHeader() {
       return Container(
         constraints: BoxConstraints(maxHeight: 200),
-        child: Text(info.header,
+        child: Text(info.title,
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w300)),
       );
     }
@@ -19,13 +20,13 @@ class InfoCard extends StatelessWidget {
     ConstrainedBox _buildTextSection() {
       return ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 50),
-        child: Text(info.content),
+        child: Text(info.intro),
       );
     }
 
     return GestureDetector(
       child: GestureDetector(
-          onTap: () => _onInfoCardTap(context, info.id),
+          onTap: () => _onInfoCardTap(context, info.url),
           child: Padding(
             padding: EdgeInsets.all(5.0),
             child: Card(
@@ -46,12 +47,8 @@ class InfoCard extends StatelessWidget {
     );
   }
 
-  void _onInfoCardTap(BuildContext context, int infoID) {
-    print('working');
-    Navigator.pushNamed(
-      context,
-      '/infoDetailScreen',
-      arguments: {'id': infoID},
-    );
+  void _onInfoCardTap(BuildContext context, String url) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => WebViewContainer(url)));
   }
 }
