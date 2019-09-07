@@ -1,7 +1,9 @@
 class Info {
   int id;
-  String header;
-  String content;
+  String author;
+  String title;
+  String intro;
+  String url;
 
-  Info({this.id, this.header, this.content});
+  Info({this.author, this.id, this.title, this.intro, this.url});
 }

@@ -73,7 +73,7 @@ class PreviewCard extends StatelessWidget {
 
   void _openMap(double lat, double long) async {
     // Android
-    var url = 'geo:0,0?q=$lat,$long';
+    var url = 'geo:$lat,$long';
     if (Platform.isIOS) {
       // iOS
       url = 'http://maps.apple.com/?q=$lat,$long';
