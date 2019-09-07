@@ -36,6 +36,8 @@ dependencies:
   rxdart: ^0.22.2
   shared_preferences: ^0.5.3+4
   flare_flutter: ^1.5.4
+  titled_navigation_bar: ^3.6.0
+  curved_navigation_bar: ^0.3.1
 
 dev_dependencies:
   flutter_test:

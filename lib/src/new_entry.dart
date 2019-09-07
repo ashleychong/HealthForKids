@@ -57,7 +57,7 @@ class _NewEntryState extends State<NewEntry> {
         ),
         centerTitle: true,
         title: Text(
-          "Add New Mediminder",
+          "Add New Reminder",
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -74,7 +74,7 @@ class _NewEntryState extends State<NewEntry> {
             ),
             children: <Widget>[
               PanelTitle(
-                title: "Medicine Name",
+                title: "Reminder Name",
                 isRequired: true,
               ),
               TextFormField(
@@ -108,7 +108,7 @@ class _NewEntryState extends State<NewEntry> {
               ),
 
               PanelTitle(
-                title: "Medicine Type",
+                title: "Reminder Type",
                 isRequired: false,
               ),
               Padding(
@@ -120,31 +120,31 @@ class _NewEntryState extends State<NewEntry> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         MedicineTypeColumn(
-                            type: MedicineType.Bottle,
-                            name: "Bottle",
-                            iconValue: 0xe900,
-                            isSelected: snapshot.data == MedicineType.Bottle
+                            type: MedicineType.Milk,
+                            name: "Milk",
+                            iconValue: IconData(0xe900, fontFamily: "Ic"),
+                            isSelected: snapshot.data == MedicineType.Milk
                                 ? true
                                 : false),
                         MedicineTypeColumn(
-                            type: MedicineType.Pill,
-                            name: "Pill",
-                            iconValue: 0xe901,
-                            isSelected: snapshot.data == MedicineType.Pill
+                            type: MedicineType.Medicine,
+                            name: "Medicine",
+                            iconValue: Icons.local_hospital,//IconData(0xe901, fontFamily: "Ic"),
+                            isSelected: snapshot.data == MedicineType.Medicine
                                 ? true
                                 : false),
                         MedicineTypeColumn(
-                            type: MedicineType.Syringe,
-                            name: "Syringe",
-                            iconValue: 0xe902,
-                            isSelected: snapshot.data == MedicineType.Syringe
+                            type: MedicineType.Food,
+                            name: "Food",
+                            iconValue: Icons.restaurant,
+                            isSelected: snapshot.data == MedicineType.Food
                                 ? true
                                 : false),
                         MedicineTypeColumn(
-                            type: MedicineType.Tablet,
-                            name: "Tablet",
-                            iconValue: 0xe903,
-                            isSelected: snapshot.data == MedicineType.Tablet
+                            type: MedicineType.Other,
+                            name: "Other",
+                            iconValue: Icons.alarm,
+                            isSelected: snapshot.data == MedicineType.Other
                                 ? true
                                 : false),
                       ],
@@ -360,7 +360,7 @@ class _NewEntryState extends State<NewEntry> {
           'Mediminder: ${medicine.medicineName}',
           medicine.medicineType.toString() != MedicineType.None.toString()
               ? 'It is time to take your ${medicine.medicineType.toLowerCase()}, according to schedule'
-              : 'It is time to take your medicine, according to schedule',
+              : 'It is time to your reminder, according to schedule',
           Time(hour, minute, 0),
           platformChannelSpecifics);
       hour = ogValue;
@@ -507,7 +507,7 @@ class _SelectTimeState extends State<SelectTime> {
 class MedicineTypeColumn extends StatelessWidget {
   final MedicineType type;
   final String name;
-  final int iconValue;
+  final IconData iconValue;
   final bool isSelected;
 
   MedicineTypeColumn(
@@ -537,7 +537,7 @@ class MedicineTypeColumn extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(top: 14.0),
                 child: Icon(
-                  IconData(iconValue, fontFamily: "Ic"),
+                  iconValue,
                   size: 75,
                   color: isSelected ? Colors.white : Color(0xFF3EB16F),
                 ),

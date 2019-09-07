@@ -23,7 +23,7 @@ class MedicineDetails extends StatelessWidget {
         ),
         centerTitle: true,
         title: Text(
-          "Mediminder Details",
+          "Reminder Details",
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -33,7 +33,7 @@ class MedicineDetails extends StatelessWidget {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -46,7 +46,7 @@ class MedicineDetails extends StatelessWidget {
                 padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.height * 0.06,
                   right: MediaQuery.of(context).size.height * 0.06,
-                  top: 25,
+                  top: 5,
                 ),
                 child: Container(
                   width: 280,
@@ -59,7 +59,7 @@ class MedicineDetails extends StatelessWidget {
                     },
                     child: Center(
                       child: Text(
-                        "Delete Mediminder",
+                        "Delete Reminder",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
@@ -89,7 +89,7 @@ class MedicineDetails extends StatelessWidget {
             ),
             contentPadding: EdgeInsets.only(top: 10.0),
             content: Container(
-              width: 300.0,
+              width: MediaQuery.of(context).size.width/2.743*2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -99,7 +99,7 @@ class MedicineDetails extends StatelessWidget {
                     padding: EdgeInsets.all(18),
                     child: Center(
                       child: Text(
-                        "Delete this Mediminder?",
+                        "Delete this Reminder?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
@@ -144,7 +144,7 @@ class MedicineDetails extends StatelessWidget {
                         },
                         child: InkWell(
                           child: Container(
-                            width: MediaQuery.of(context).size.width / 2.743,
+                            width: (MediaQuery.of(context).size.width / 2.743),
                             padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
                             decoration: BoxDecoration(
                               color: Colors.red[700],
@@ -183,7 +183,7 @@ class MainSection extends StatelessWidget {
   }) : super(key: key);
 
   Hero makeIcon(double size) {
-    if (medicine.medicineType == "Bottle") {
+    if (medicine.medicineType == "Milk") {
       return Hero(
         tag: medicine.medicineName + medicine.medicineType,
         child: Icon(
@@ -192,29 +192,29 @@ class MainSection extends StatelessWidget {
           size: size,
         ),
       );
-    } else if (medicine.medicineType == "Pill") {
+    } else if (medicine.medicineType == "Medicine") {
       return Hero(
         tag: medicine.medicineName + medicine.medicineType,
         child: Icon(
-          IconData(0xe901, fontFamily: "Ic"),
+          Icons.local_hospital,
           color: Color(0xFF3EB16F),
           size: size,
         ),
       );
-    } else if (medicine.medicineType == "Syringe") {
+    } else if (medicine.medicineType == "Food") {
       return Hero(
         tag: medicine.medicineName + medicine.medicineType,
         child: Icon(
-          IconData(0xe902, fontFamily: "Ic"),
+          Icons.restaurant,
           color: Color(0xFF3EB16F),
           size: size,
         ),
       );
-    } else if (medicine.medicineType == "Tablet") {
+    } else if (medicine.medicineType == "Other") {
       return Hero(
         tag: medicine.medicineName + medicine.medicineType,
         child: Icon(
-          IconData(0xe903, fontFamily: "Ic"),
+          Icons.alarm,
           color: Color(0xFF3EB16F),
           size: size,
         ),
@@ -223,7 +223,7 @@ class MainSection extends StatelessWidget {
     return Hero(
       tag: medicine.medicineName + medicine.medicineType,
       child: Icon(
-        Icons.local_hospital,
+        Icons.add_to_queue,
         color: Color(0xFF3EB16F),
         size: size,
       ),
@@ -246,7 +246,7 @@ class MainSection extends StatelessWidget {
                 child: Material(
                   color: Colors.transparent,
                   child: MainInfoTab(
-                    fieldTitle: "Medicine Name",
+                    fieldTitle: "Reminder Name",
                     fieldInfo: medicine.medicineName,
                   ),
                 ),
@@ -313,13 +313,13 @@ class ExtendedSection extends StatelessWidget {
         shrinkWrap: true,
         children: <Widget>[
           ExtendedInfoTab(
-            fieldTitle: "Medicine Type",
+            fieldTitle: "Reminder Type",
             fieldInfo: medicine.medicineType == "None"
                 ? "Not Specified"
                 : medicine.medicineType,
           ),
           ExtendedInfoTab(
-            fieldTitle: "Dose Interval",
+            fieldTitle: "Time Interval",
             fieldInfo: "Every " +
                 medicine.interval.toString() +
                 " hours  | " +

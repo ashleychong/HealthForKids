@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:health_for_kids/screens/swipe_feed_page.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:location/location.dart';
+import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 import 'package:health_for_kids/screens/reminder.dart';
 
 class Homescreen extends StatefulWidget {
@@ -75,42 +77,60 @@ class _HomescreenState extends State<Homescreen> {
           child: _getTab(currentPage),
         ),
       ),
-      bottomNavigationBar: FancyBottomNavigation(
-        tabs: [
-          TabData(
-            iconData: Icons.map,
-            title: 'Clinics',
-          ),
-          TabData(
-            iconData: Icons.info,
-            title: 'Info',
-          ),
-          TabData(
-            iconData: Icons.list,
-            title: 'Tips',
-          ),
-//          TabData(
-//            iconData: Icons.calendar_today,
-//            title: 'Reminder',
-//          ),
-          TabData(
-            iconData: Icons.forum,
-            title: 'Forum',
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).accentColor,
+        buttonBackgroundColor: Theme.of(context).accentColor,
+        items: [
+          Icon(Icons.explore,),
+          Icon(Icons.info,),
+          Icon(Icons.list,),
+          Icon(Icons.calendar_today,),
+          Icon(Icons.forum,),
         ],
-        onTabChangedListener: (position) {
+        onTap: (index) {
           setState(() {
-            currentPage = position;
+            currentPage = index;
           });
         },
-      ));
+      ),
+//    bottomNavigationBar: FancyBottomNavigation(
+//      tabs: [
+//        TabData(
+//          iconData: Icons.map,
+//          title: 'Clinics',
+//        ),
+//        TabData(
+//          iconData: Icons.info,
+//          title: 'Info',
+//        ),
+//        TabData(
+//          iconData: Icons.list,
+//          title: 'Tips',
+//        ),
+////          TabData(
+////            iconData: Icons.calendar_today,
+////            title: 'Reminder',
+////          ),
+//        TabData(
+//          iconData: Icons.forum,
+//          title: 'Forum',
+//        ),
+//      ],
+//      onTabChangedListener: (position) {
+//        setState(() {
+//          currentPage = position;
+//        });
+//      },
+//    )
+  );
 
   Widget _getTab(int page) {
     List<Widget> pages = <Widget>[
       _buildMap(context),
       InfoScreen(),
       SwipeFeedPage(),
-//      MedicineReminder(),
+      MedicineReminder(),
       _buildForumWebView(),
     ];
     return pages[page];
