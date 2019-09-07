@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:health_for_kids/model/medicine.dart';
+import 'package:health_for_kids/src/success_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'global_bloc.dart';
@@ -114,16 +115,22 @@ class MedicineDetails extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           _globalBloc.removeMedicine(medicine);
+                          //Dont do anything first when deleted, manually exit
+                          Navigator.of(context).pop();
 //                          Navigator.popUntil(
 //                            context,
 //                            ModalRoute.withName('/'),
 //                          );
-                          Future.delayed(Duration.zero, () {
-                            Navigator.popUntil(
-                              context,
-                              ModalRoute.withName('/'),
-                            );
-                          });
+//                          Future.delayed(Duration.zero, () {
+//                            Navigator.pushReplacement(
+//                              context,
+//                              MaterialPageRoute(
+//                                builder: (BuildContext context) {
+//                                  return SuccessScreen();
+//                                },
+//                              ),
+//                            );
+//                          });
 //                          () {
 //                            Navigator.popUntil(
 //                              context,
