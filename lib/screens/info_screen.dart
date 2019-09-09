@@ -82,10 +82,14 @@ class _InfoScreenState extends State<InfoScreen> {
     List<Info> info = getInfo();
     if (query.isNotEmpty) {
       for (int i = 0; i < info.length; i++) {
-        List<String> substring = info[i].title.split(" ");
-        for (int j = 0; j < substring.length; j++) {
-          //title is in sentence case, we need to perform non-case-sensitive search
-          if (substring[j].toLowerCase().contains(query.toLowerCase())) {
+        String substring = info[i].title;//.split(" ");
+        List<String> queries = query.toLowerCase().split(" ");
+        //remove "" case when u type "text ", it become ["text", ""],
+        //which become a wildcard for ""
+        queries.remove("");
+        for (int j = 0; j < queries.length; j++) {
+          //title is in sentence case, we need perform non-case-sensitive search
+          if (substring.toLowerCase().contains(queries[j].toLowerCase())) {
             result.add(info[i]);
             break;
           }
