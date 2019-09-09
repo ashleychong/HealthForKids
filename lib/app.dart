@@ -10,8 +10,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFF3EB16F),//Colors.green[700],
-        accentColor: Colors.white,
-        fontFamily: 'Monotserrat'
+        accentColor: Color.fromRGBO(100, 182, 127, 1),
+        fontFamily: 'Monotserrat',
+        buttonTheme: ButtonThemeData(
+          textTheme: ButtonTextTheme.primary,
+          buttonColor: Theme.of(context).primaryColor,
+        ),
       ),
     );
   }

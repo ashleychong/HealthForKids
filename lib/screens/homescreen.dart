@@ -79,8 +79,8 @@ class _HomescreenState extends State<Homescreen> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         color: Theme.of(context).primaryColor,
-        backgroundColor: Theme.of(context).accentColor,
-        buttonBackgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Colors.white,//Theme.of(context).accentColor,
+        buttonBackgroundColor: Colors.white,//Theme.of(context).accentColor,
         items: [
           Icon(Icons.explore,),
           Icon(Icons.info,),

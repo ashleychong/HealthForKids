@@ -87,7 +87,7 @@ class TopContainer extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(
-              top: 1,
+              top: 10,
               bottom: 2,
             ),
             child: Text(
@@ -99,9 +99,9 @@ class TopContainer extends StatelessWidget {
               ),
             ),
           ),
-          Divider(
-            color: Color(0xFFB0F3CB),
-          ),
+//          Divider(
+//            color: Color(0xFFB0F3CB),
+//          ),
           Padding(
             padding: EdgeInsets.only(top: 2.0),
             child: Center(
