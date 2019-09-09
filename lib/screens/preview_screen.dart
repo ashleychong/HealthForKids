@@ -23,12 +23,6 @@ class PreviewScreen extends StatelessWidget {
     return office.address + ('\n') + office.district + ('\n') + office.state;
   }
 
-  Widget _titleSection() {
-    return ListTile(
-        title: Text(office.name,
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)));
-  }
-
   Widget _textSection(String contactType, String contact, Widget widget) {
     return ListTile(
       title: Text(contactType),

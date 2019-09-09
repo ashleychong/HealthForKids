@@ -34,14 +34,14 @@ List<Info> getInfo() {
             "https://static.onecms.io/wp-content/uploads/sites/38/2001/10/12232312/oksanakuzmina0.jpg"),
     Info(
         id: 3,
-        title: "Decoding Baby's Cries",
-        author: 'Sarah Bowen Shea',
+        title: "Baby Vaccination: What to Expect and How to Soothe the Pain",
+        author: 'Rachel Rabkin Peachman',
         intro:
-            "Looking for answers to baby's cries? Here's how to understand the tears.",
+            "Make your little one's first vaccinations as pain-free as possible—for both of you.",
         url:
-            "https://www.parents.com/baby/care/crying/understanding-baby-cries1/",
+            "https://www.parents.com/baby/health/vaccinations/how-to-handle-your-babys-first-shots/",
         imageURL:
-            "https://static.onecms.io/wp-content/uploads/sites/38/2015/07/12214620/p_101528432.jpg"),
+            "https://static.onecms.io/wp-content/uploads/sites/38/2015/06/12223012/shutterstock_455879767.jpg"),
     Info(
         id: 4,
         author: 'Anita K. Henry',
@@ -98,6 +98,16 @@ List<Info> getInfo() {
         url:
             "https://www.parents.com/baby/care/newborn/5-tricky-baby-care-tasks-explained/",
         imageURL:
-            "https://static.onecms.io/wp-content/uploads/sites/38/2014/10/12232326/550_101660805.jpg")
+            "https://static.onecms.io/wp-content/uploads/sites/38/2014/10/12232326/550_101660805.jpg"),
+    Info(
+        id: 10,
+        title: "Decoding Baby's Cries",
+        author: 'Sarah Bowen Shea',
+        intro:
+            "Looking for answers to baby's cries? Here's how to understand the tears.",
+        url:
+            "https://www.parents.com/baby/care/crying/understanding-baby-cries1/",
+        imageURL:
+            "https://static.onecms.io/wp-content/uploads/sites/38/2015/07/12214620/p_101528432.jpg"),
   ];
 }

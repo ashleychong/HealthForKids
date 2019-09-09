@@ -3,8 +3,21 @@ import 'package:health_for_kids/model/info.dart';
 import 'package:health_for_kids/src/store.dart';
 import 'package:health_for_kids/widgets/info_card.dart';
 
-class InfoScreen extends StatelessWidget {
-  final List<Info> infoList = getInfo();
+class InfoScreen extends StatefulWidget {
+  @override
+  _InfoScreenState createState() => _InfoScreenState();
+}
+
+class _InfoScreenState extends State<InfoScreen> {
+  final List<Info> _allInfoList = getInfo();
+  List<Info> _displayList = List<Info>();
+  TextEditingController _editingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _displayList.addAll(_allInfoList);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +26,81 @@ class InfoScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5.0),
         child: Column(
           children: <Widget>[
+            // Expanded(
+            // child:
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: _buildTextField(),
+              // ),
+            ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: infoList.length,
-                  //itemBuilder will execute its function for itemCount times
-                  itemBuilder: (BuildContext context, int index) => Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 8.0),
-                        child: InfoCard(
-                          info: infoList[index],
-                        ),
-                      )),
+              child: GestureDetector(
+                //hide soft keyboard as user scrolls
+                behavior: HitTestBehavior.opaque,
+                onPanDown: (_) => FocusScope.of(context).requestFocus(
+                  FocusNode(),
+                ),
+                child: ListView.builder(
+                    itemCount: _displayList.length,
+                    //itemBuilder will execute its function for itemCount times
+                    itemBuilder: (BuildContext context, int index) => Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5.0, horizontal: 8.0),
+                          child: InfoCard(
+                            info: _displayList[index],
+                          ),
+                        )),
+              ),
             ),
           ],
         ));
+  }
+
+  Widget _buildTextField() {
+    return TextField(
+      onChanged: (query) => _filterSearchResult(query),
+      controller: _editingController,
+      decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search),
+          hintText: "Search",
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () => setState(() {
+              _editingController.clear();
+              _displayList.clear();
+              _displayList.addAll(_allInfoList);
+            }),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(13.0)),
+          )),
+    );
+  }
+
+  void _filterSearchResult(String query) {
+    List<Info> result = new List<Info>();
+    List<Info> info = getInfo();
+    if (query.isNotEmpty) {
+      for (int i = 0; i < info.length; i++) {
+        List<String> substring = info[i].title.split(" ");
+        for (int j = 0; j < substring.length; j++) {
+          //title is in sentence case, we need to perform non-case-sensitive search
+          if (substring[j].toLowerCase().contains(query.toLowerCase())) {
+            result.add(info[i]);
+            break;
+          }
+        }
+      }
+      setState(() {
+        _displayList.clear();
+        _displayList.addAll(result);
+        return;
+      });
+    } else {
+      setState(() {
+        _displayList.clear();
+        _displayList.addAll(_allInfoList);
+      });
+    }
   }
 }
