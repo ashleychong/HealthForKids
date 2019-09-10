@@ -1,4 +1,4 @@
-package com.example.health_for_kids;
+package com.jiuntian.health_for_kids;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
