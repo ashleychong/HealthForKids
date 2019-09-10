@@ -38,7 +38,7 @@ class _SwipeFeedPageState extends State<SwipeFeedPage> {
           showAlignmentCards
               ? new CardsSectionAlignment(context)
               : new CardsSectionDraggable(),
-          buttonsRow()
+//          buttonsRow()
         ],
       ),
     );

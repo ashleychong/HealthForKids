@@ -9,12 +9,12 @@ class ProfileCardAlignment extends StatelessWidget {
     return new Card(
       child: new Stack(
         children: <Widget>[
-          new SizedBox.expand(
-            child: new Material(
-              borderRadius: new BorderRadius.circular(12.0),
-              child: new Image.asset('assets/images/portrait.jpeg', fit: BoxFit.cover),
-            ),
-          ),
+//          new SizedBox.expand(
+//            child: new Material(
+//              borderRadius: new BorderRadius.circular(12.0),
+//              child: new Image.asset('assets/images/portrait.jpeg', fit: BoxFit.cover),
+//            ),
+//          ),
           new SizedBox.expand(
             child: new Container(
               decoration: new BoxDecoration(

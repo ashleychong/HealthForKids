@@ -38,6 +38,7 @@ dependencies:
   flare_flutter: ^1.5.4
   titled_navigation_bar: ^3.6.0
   curved_navigation_bar: ^0.3.1
+  flutter_tindercard: ^0.1.7
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,9 @@ flutter:
     - family: Angel
       fonts:
         - asset: assets/fonts/neu/Angel Signature.ttf
+    - family: Playfair Display
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
