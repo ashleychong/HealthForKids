@@ -38,23 +38,26 @@ class PreviewCard extends StatelessWidget {
                     )),
                   ),
                 )),
+            Padding(padding: EdgeInsets.only(top: 7)),
             ListTile(
-              title: Text(
-                _fullAddress(),
-                style: TextStyle(fontSize: 14.0),
-              ),
-              leading: Icon(Icons.location_on),
-              trailing: Icon(Icons.directions, color: Theme.of(context).primaryColor,),
-              onTap: () {
-                _openMap(this.office.lat, this.office.long);
-              }
-            ),
+                title: Text(
+                  _fullAddress(),
+                  style: TextStyle(fontSize: 14.0),
+                ),
+                leading: Icon(Icons.location_on),
+                trailing: Icon(
+                  Icons.directions,
+                  color: Theme.of(context).primaryColor,
+                ),
+                onTap: () {
+                  _openMap(this.office.lat, this.office.long);
+                }),
             ListTile(
               title: Text(this.office.phone),
               leading: Icon(Icons.call),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 18),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 7),
             )
           ],
         ),

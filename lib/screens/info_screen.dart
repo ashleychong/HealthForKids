@@ -26,12 +26,9 @@ class _InfoScreenState extends State<InfoScreen> {
         padding: const EdgeInsets.symmetric(vertical: 5.0),
         child: Column(
           children: <Widget>[
-            // Expanded(
-            // child:
             Padding(
               padding: EdgeInsets.all(10.0),
               child: _buildTextField(),
-              // ),
             ),
             Expanded(
               child: GestureDetector(
@@ -45,7 +42,7 @@ class _InfoScreenState extends State<InfoScreen> {
                     //itemBuilder will execute its function for itemCount times
                     itemBuilder: (BuildContext context, int index) => Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 8.0),
+                              vertical: 5.5, horizontal: 8.0),
                           child: InfoCard(
                             info: _displayList[index],
                           ),
@@ -72,7 +69,7 @@ class _InfoScreenState extends State<InfoScreen> {
             }),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(13.0)),
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
           )),
     );
   }
@@ -82,7 +79,7 @@ class _InfoScreenState extends State<InfoScreen> {
     List<Info> info = getInfo();
     if (query.isNotEmpty) {
       for (int i = 0; i < info.length; i++) {
-        String substring = info[i].title;//.split(" ");
+        String substring = info[i].title; //.split(" ");
         List<String> queries = query.toLowerCase().split(" ");
         //remove "" case when u type "text ", it become ["text", ""],
         //which become a wildcard for ""

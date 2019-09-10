@@ -67,33 +67,49 @@ class _HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Health For Kids')),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: _getTab(currentPage),
+        appBar: AppBar(
+          title: Center(
+              child: Text('Health For Kids',
+                  style: TextStyle(
+                      fontFamily: 'Playfair Display',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                      letterSpacing: 0.6))),
+          backgroundColor: Theme.of(context).primaryColor,
         ),
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        color: Theme.of(context).primaryColor,
-        backgroundColor: Colors.white,//Theme.of(context).accentColor,
-        buttonBackgroundColor: Colors.white,//Theme.of(context).accentColor,
-        items: [
-          Icon(Icons.explore,),
-          Icon(Icons.info,),
-          Icon(Icons.list,),
-          Icon(Icons.calendar_today,),
-          Icon(Icons.forum,),
-        ],
-        onTap: (index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-      ),
+        body: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: Center(
+            child: _getTab(currentPage),
+          ),
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          color: Theme.of(context).primaryColor,
+          backgroundColor: Colors.white, //Theme.of(context).accentColor,
+          buttonBackgroundColor: Colors.white, //Theme.of(context).accentColor,
+          items: [
+            Icon(
+              Icons.explore,
+            ),
+            Icon(
+              Icons.info,
+            ),
+            Icon(
+              Icons.list,
+            ),
+            Icon(
+              Icons.calendar_today,
+            ),
+            Icon(
+              Icons.forum,
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              currentPage = index;
+            });
+          },
+        ),
 //    bottomNavigationBar: FancyBottomNavigation(
 //      tabs: [
 //        TabData(
@@ -123,7 +139,7 @@ class _HomescreenState extends State<Homescreen> {
 //        });
 //      },
 //    )
-  );
+      );
 
   Widget _getTab(int page) {
     List<Widget> pages = <Widget>[

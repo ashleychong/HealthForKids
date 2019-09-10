@@ -20,7 +20,7 @@ class _TipsScreenState extends State<TipsScreen> with TickerProviderStateMixin {
         imageURL:
             "https://files.brightside.me/files/news/part_66/665910/8563610-ss-1545057676-728-e943e1583d-1545300601.jpg"),
     Tip(
-        content: "Music can soothe the most savage baby",
+        content: "Music can soothe the most savage baby.",
         imageURL:
             "https://files.brightside.me/files/news/part_66/665910/8563460-music-1831221_640-1545050547-728-f9eab61a90-1545300601.jpg"),
     Tip(
@@ -40,40 +40,45 @@ class _TipsScreenState extends State<TipsScreen> with TickerProviderStateMixin {
 //          crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * 0.045),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.045),
               child: Text('Tips of the Day',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600,fontFamily: 'Playfair Display')),
+                  style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Playfair Display')),
             ),
             Align(
                 alignment: Alignment.center,
                 child: Container(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: new TinderSwapCard(
-                        orientation: AmassOrientation.BOTTOM,
-                        totalNum: tips.length,
-                        stackNum: 3,
-                        swipeEdge: 4.0,
-                        maxWidth: MediaQuery.of(context).size.width * 0.9,
-                        maxHeight: MediaQuery.of(context).size.width * 0.9,
-                        minWidth: MediaQuery.of(context).size.width * 0.8,
-                        minHeight: MediaQuery.of(context).size.width * 0.8,
-                        cardBuilder: (context, index) => Card(
-                              child: _buildCard(index),
-                            ),
-                        cardController: controller = CardController(),
-                        swipeUpdateCallback:
-                            (DragUpdateDetails details, Alignment align) {
-                          /// Get swiping card's alignment
-                          if (align.x < 0) {
-                            //Card is LEFT swiping
-                          } else if (align.x > 0) {
-                            //Card is RIGHT swiping
-                          }
-                        },
-                        swipeCompleteCallback:
-                            (CardSwipeOrientation orientation, int index) {
-                          /// Get orientation & index of swiped card!
-                        })))
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  child: new TinderSwapCard(
+                      orientation: AmassOrientation.BOTTOM,
+                      totalNum: tips.length,
+                      stackNum: 3,
+                      swipeEdge: 4.0,
+                      maxWidth: MediaQuery.of(context).size.width * 0.9,
+                      maxHeight: MediaQuery.of(context).size.width * 0.9,
+                      minWidth: MediaQuery.of(context).size.width * 0.8,
+                      minHeight: MediaQuery.of(context).size.width * 0.8,
+                      cardBuilder: (context, index) => Card(
+                            child: _buildCard(index),
+                          ),
+                      cardController: controller = CardController(),
+                      swipeUpdateCallback:
+                          (DragUpdateDetails details, Alignment align) {
+                        /// Get swiping card's alignment
+                        if (align.x < 0) {
+                          //Card is LEFT swiping
+                        } else if (align.x > 0) {
+                          //Card is RIGHT swiping
+                        }
+                      },
+                      swipeCompleteCallback:
+                          (CardSwipeOrientation orientation, int index) {
+                        /// Get orientation & index of swiped card!
+                      }),
+                ))
           ]),
     );
   }
@@ -104,7 +109,11 @@ class _TipsScreenState extends State<TipsScreen> with TickerProviderStateMixin {
                 children: <Widget>[
                   new Text(currentTip.content,
                       style: new TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w700)),
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Playfair Display',
+                        letterSpacing: 0.4,
+                      )),
                 ],
               ))
         ],

@@ -30,7 +30,7 @@ class InfoCard extends StatelessWidget {
                 bottom: BorderSide(color: Colors.grey),
                 left: BorderSide(color: Colors.grey),
                 right: BorderSide(color: Colors.grey)),
-            borderRadius: BorderRadius.circular(12.0)),
+            borderRadius: BorderRadius.circular(16.0)),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0.0, 0.5, 0.0, 0.5),
           child: Padding(
