@@ -117,6 +117,42 @@ class _NewEntryState extends State<NewEntry> {
                 child: StreamBuilder<MedicineType>(
                   stream: _newEntryBloc.selectedMedicineType,
                   builder: (context, snapshot) {
+                    return Flexible(
+                      fit: FlexFit.loose,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          MedicineTypeColumn(
+                              type: MedicineType.Milk,
+                              name: "Milk",
+                              iconValue: IconData(0xe900, fontFamily: "Ic"),
+                              isSelected: snapshot.data == MedicineType.Milk
+                                  ? true
+                                  : false),
+                          MedicineTypeColumn(
+                              type: MedicineType.Medicine,
+                              name: "Medicine",
+                              iconValue: Icons.local_hospital,//IconData(0xe901, fontFamily: "Ic"),
+                              isSelected: snapshot.data == MedicineType.Medicine
+                                  ? true
+                                  : false),
+                          MedicineTypeColumn(
+                              type: MedicineType.Food,
+                              name: "Food",
+                              iconValue: Icons.restaurant,
+                              isSelected: snapshot.data == MedicineType.Food
+                                  ? true
+                                  : false),
+                          MedicineTypeColumn(
+                              type: MedicineType.Other,
+                              name: "Other",
+                              iconValue: Icons.alarm,
+                              isSelected: snapshot.data == MedicineType.Other
+                                  ? true
+                                  : false),
+                        ],
+                      ),
+                    );
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
