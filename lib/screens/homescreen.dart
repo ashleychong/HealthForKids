@@ -1,7 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:health_for_kids/screens/swipe_feed_page.dart';
 import 'package:health_for_kids/screens/tips_screen.dart';
 import 'package:health_for_kids/widgets/preview_card.dart';
 import 'package:webview_flutter/webview_flutter.dart';
