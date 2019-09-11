@@ -117,8 +117,8 @@ class _NewEntryState extends State<NewEntry> {
                 child: StreamBuilder<MedicineType>(
                   stream: _newEntryBloc.selectedMedicineType,
                   builder: (context, snapshot) {
-                    return Flexible(
-                      fit: FlexFit.loose,
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
@@ -207,6 +207,7 @@ class _NewEntryState extends State<NewEntry> {
                 padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.height * 0.08,
                   right: MediaQuery.of(context).size.height * 0.08,
+                  bottom: 20,
                 ),
                 child: Container(
                   width: 220,
@@ -413,9 +414,13 @@ class IntervalSelection extends StatefulWidget {
 
 class _IntervalSelectionState extends State<IntervalSelection> {
   var _intervals = [
+    1,
+    2,
+    4,
     6,
     8,
     12,
+    18,
     24,
   ];
   var _selected = 0;

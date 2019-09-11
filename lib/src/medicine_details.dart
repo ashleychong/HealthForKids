@@ -50,6 +50,7 @@ class MedicineDetails extends StatelessWidget {
                   left: MediaQuery.of(context).size.height * 0.06,
                   right: MediaQuery.of(context).size.height * 0.06,
                   top: 5,
+                  bottom: 20,
                 ),
                 child: Container(
                   width: 280,
@@ -90,12 +91,12 @@ class MedicineDetails extends StatelessWidget {
                 Radius.circular(30.0),
               ),
             ),
-            contentPadding: EdgeInsets.only(top: 10.0),
+            contentPadding: EdgeInsets.only(top: 10.0, left: 0, right: 0),
             content: Container(
               width: MediaQuery.of(context).size.width / 2.743 * 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Padding(
@@ -110,7 +111,8 @@ class MedicineDetails extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
@@ -140,7 +142,7 @@ class MedicineDetails extends StatelessWidget {
                         },
                         child: InkWell(
                           child: Container(
-                            width: MediaQuery.of(context).size.width / 2.743,
+                            width: (MediaQuery.of(context).size.width / 2.743 ),
                             padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
                             decoration: BoxDecoration(
                               color: Color(0xFF3EB16F),
@@ -301,7 +303,7 @@ class MainInfoTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.35,
+      width: MediaQuery.of(context).size.width * 0.30,
       height: 100,
       child: ListView(
         padding: EdgeInsets.only(top: 15),
